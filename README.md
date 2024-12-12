@@ -19,3 +19,4 @@ The project includes several functions to convert, calculate, and compare number
 - **`int2Number(int num, int base)`**: Converts a decimal number to a specific base.
 - **`isNumber(String num)`**: Checks if a number string is valid.
 - **`maxIndex(String[] arr)`**: Returns the index of the largest number in an array.
+- **`equals(String n1, String n2) `**: Makes sure the strings are equal

@@ -1,5 +1,7 @@
 package assignments.Ex1;
+
 import assignments.Ex1.Ex1;
+
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
@@ -24,6 +26,7 @@ public class Ex1 {
         if (!isNumber(num)) {
             return -1;
         }
+        // If there is no base, treat it as a regular decimal number
         if (!num.contains("b")) {
             int numberValue = 0;
             for (int i = 0; i < num.length(); i++) {
@@ -35,11 +38,12 @@ public class Ex1 {
             return numberValue;
         }
 
-
+// Splitting the parts of the number and the base
         int baseIndex = num.lastIndexOf('b');
         String numberPart = num.substring(0, baseIndex);
         String basePart = num.substring(baseIndex + 1);
 
+        // Identifying the base from the second part of the string
         int base = 0;
         char c = basePart.charAt(0);
         if (c >= '2' && c <= '9') {
@@ -48,7 +52,7 @@ public class Ex1 {
             base = c - 'A' + 10;
         }
 
-
+// Calculating the number in decimal base
         int result = 0;
         for (int i = 0; i < numberPart.length(); i++) {
             char x = numberPart.charAt(i);
@@ -78,11 +82,12 @@ public class Ex1 {
      * @return true iff the given String is in a number format
      */
     public static boolean isNumber(String a) {
+        // whether the string is empty, contains spaces, or is null
         if (a == null || a.isEmpty() || a.contains(" ")) {
             return false;
         }
 
-
+// If there is no "b", check that the string contains only digits
         if (!a.contains("b")) {
             for (int i = 0; i < a.length(); i++) {
                 if (!Character.isDigit(a.charAt(i))) {
@@ -91,7 +96,7 @@ public class Ex1 {
             }
             return true;
         }
-
+// Check if there is more than one "b"
         int countB = 0;
         for (int i = 0; i < a.length(); i++) {
             if (a.charAt(i) == 'b') {
@@ -115,7 +120,7 @@ public class Ex1 {
         if (numberPart.isEmpty() || basePart.isEmpty()) {
             return false;
         }
-
+// If one of the parts is empty, the format is invalid
         if (!((basePart.charAt(0) >= '2' && basePart.charAt(0) <= '9') || (basePart.charAt(0) >= 'A' && basePart.charAt(0) <= 'G'))) {
             return false;
         }
@@ -149,6 +154,7 @@ public class Ex1 {
         if (num == 0) {
             return "0b" + base;
         }
+        // Converts the number to a string in the desired base
         while (num > 0) {
             int rest = num % base;
             char gnum;
